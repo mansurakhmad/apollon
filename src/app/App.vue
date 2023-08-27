@@ -1,30 +1,35 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="ApollonApp">
+    <AppHeader />
+    <AppAside />
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
+<script setup lang="ts">
+import { AppHeader, AppAside } from '@/shared/components';
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import './global.scss';
+@import '../shared/styles/mixin.scss';
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.ApollonApp {
+  transition: all 0.2s;
+  background-image: url(../shared/assets/bg-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 2%;
+  main {
+    @include layout();
+    height: 75vh;
+    width: calc(100% - 180px - 2%);
   }
 }
 </style>
